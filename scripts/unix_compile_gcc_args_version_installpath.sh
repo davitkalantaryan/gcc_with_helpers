@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# example: ./scripts/unix_compile_gcc_args_version_installpath.sh releases/gcc-10.1.0 /afs/ifh.de/group/pitz/doocs/data/ers/sys/AlmaLinux9/gccv/10.1.0
+
 # exit when any command fails
 set -e
 
