@@ -34,6 +34,8 @@ gccDir=${repositoryRoot}/.extras/gcc
 cd ${gccDir}
 git checkout ${gccBranchName}
 git clean -xfd
+git submodule sync --recursive
+git submodule update --init --recursive
 ./contrib/download_prerequisites
 
 # build dir
@@ -46,5 +48,5 @@ mkdir -p ${installDir}
 
 # cd to build dir
 cd ${buildDir}
-${gccDir}/configure --prefix=${installDir} --disable-multilib
+${gccDir}/configure --prefix=${installDir} --disable-multilib --disable-libsanitizer
 make -j$(nproc)

@@ -22,6 +22,6 @@ if [ ! -d "$EXTRAS_DIRECTORY" ]; then
 fi
 
 cd ${EXTRAS_DIRECTORY}
-if [ ! -d "root" ]; then
+if [ ! -d "gcc" ]; then
     git clone https://github.com/davitkalantaryan/fork-gcc.git gcc
 fi
