@@ -6,11 +6,6 @@ set -e
 # keep track of the last executed command
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 
-# some defs
-rootVersinName=${1}
-installDir=${2}
-configuration=Debug
-
 scriptFileFullPath=`readlink -f ${0}`
 scriptDirectory=`dirname ${scriptFileFullPath}`
 cd ${scriptDirectory}/..
