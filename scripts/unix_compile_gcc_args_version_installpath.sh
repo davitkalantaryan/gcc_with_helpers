@@ -27,6 +27,8 @@ else
     exit 1
 fi
 
+startDate=$(date)
+
 ${scriptDirectory}/unix_prepare_repo_once.sh
 
 gccDir=${repositoryRoot}/.extras/gcc
@@ -51,3 +53,8 @@ ${gccDir}/configure --prefix=${installDir} --disable-multilib --disable-libsanit
 make -j$(nproc)
 mkdir -p ${installDir}
 make install
+
+endDate=$(date)
+
+echo "startDate: " $startDate
+echo "endDate:   " $endDate
