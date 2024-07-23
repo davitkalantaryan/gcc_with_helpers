@@ -44,10 +44,10 @@ mkdir -p ${buildDir}
 
 # install dir
 rm -fr ${installDir}
-mkdir -p ${installDir}
 
 # cd to build dir
 cd ${buildDir}
 ${gccDir}/configure --prefix=${installDir} --disable-multilib --disable-libsanitizer
 make -j$(nproc)
+mkdir -p ${installDir}
 make install
