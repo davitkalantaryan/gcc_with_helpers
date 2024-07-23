@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# example: ./scripts/unix_compile_gcc_args_version_installpath.sh releases/gcc-10.1.0 /afs/ifh.de/group/pitz/doocs/data/ers/sys/AlmaLinux9/gccv/10.1.0
+# example: ./scripts/unix_compile_gcc_args_version_installpath.sh releases/gcc-9.5.0 /afs/ifh.de/group/pitz/doocs/ers/sys/AlmaLinux9/gccv/9.5.0
 
 # exit when any command fails
 set -e
@@ -50,3 +50,4 @@ mkdir -p ${installDir}
 cd ${buildDir}
 ${gccDir}/configure --prefix=${installDir} --disable-multilib --disable-libsanitizer
 make -j$(nproc)
+make install
