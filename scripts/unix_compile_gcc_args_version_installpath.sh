@@ -49,8 +49,8 @@ rm -fr ${installDir}
 
 # cd to build dir
 cd ${buildDir}
-#${gccDir}/configure --prefix=${installDir} --disable-multilib --disable-libsanitizer
-${gccDir}/configure --prefix=${installDir} --disable-multilib --disable-libsanitizer --enable-languages=c,c++
+${gccDir}/configure --prefix=${installDir} --disable-multilib --disable-libsanitizer --disable-libjava
+#${gccDir}/configure --prefix=${installDir} --disable-multilib --disable-libsanitizer --enable-languages=c,c++
 make -j$(nproc)
 mkdir -p ${installDir}
 make install
