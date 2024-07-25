@@ -29,6 +29,9 @@ fi
 
 startDate=$(date)
 
+export CFLAGS="$CFLAGS -I${repositoryRoot}/include"
+export CPPFLAGS="$CPPFLAGS -I${repositoryRoot}/include"
+
 ${scriptDirectory}/unix_prepare_repo_once.sh
 
 gccDir=${repositoryRoot}/.extras/gcc
