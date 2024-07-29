@@ -35,13 +35,13 @@ glibcDir=${repositoryRoot}/.extras/glibc
 
 cd ${glibcDir}
 git checkout .
-git checkout ${gccBranchName}
+git checkout ${glibcBranchName}
 git clean -xfd
 git submodule sync --recursive
 git submodule update --init --recursive
 
 # build dir
-buildDir=${repositoryRoot}/build/${lsbCode}/glibc/${gccBranchName}
+buildDir=${repositoryRoot}/build/${lsbCode}/glibc/${glibcBranchName}
 mkdir -p ${buildDir}
 
 # install dir
