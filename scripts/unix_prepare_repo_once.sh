@@ -17,6 +17,11 @@ if [ ! -d "$EXTRAS_DIRECTORY" ]; then
 fi
 
 cd ${EXTRAS_DIRECTORY}
+
 if [ ! -d "gcc" ]; then
     git clone https://github.com/davitkalantaryan/fork-gcc.git gcc
+fi
+
+if [ ! -d "glibc" ]; then
+    git clone https://github.com/davitkalantaryan/fork-glibc.git glibc
 fi
