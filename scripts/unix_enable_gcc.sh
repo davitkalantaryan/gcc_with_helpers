@@ -22,12 +22,12 @@ makeMainJob() {
     fi
 
     # Set up C include path
-    local c_include_path=$(find ${gccRootDir} -name "stdlib.h" -type f | head -n 1)
+    local c_include_path=$(find ${gccRootDir} -name "malloc.h" -type f | head -n 1)
     if [ -n "$c_include_path" ]; then
         c_include_path=$(dirname "$c_include_path")
 	export C_INCLUDE_PATH=${c_include_path}${C_INCLUDE_PATH:+:$C_INCLUDE_PATH}
     else
-        echo "Warning: stdlib.h header not found in ${gccRootDir}. C include path not set."
+        echo "Warning: malloc.h header not found in ${gccRootDir}. C include path not set."
     fi
 
     # Set up library path

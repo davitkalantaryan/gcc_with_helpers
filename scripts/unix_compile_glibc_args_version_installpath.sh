@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# example: ./scripts/unix_compile_gcc_args_version_installpath.sh releases/gcc-9.5.0 /afs/ifh.de/group/pitz/doocs/ers/sys/AlmaLinux9/gccv/9.5.0
+# example: ./scripts/unix_compile_glibc_args_version_installpath.sh glibc-2.17.90 /afs/ifh.de/group/pitz/doocs/ers/sys/AlmaLinux9/glibcv/2.17.90
 
 # exit when any command fails
 set -e
@@ -9,7 +9,7 @@ set -e
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 
 # some defs
-gccBranchName=${1}
+glibcBranchName=${1}
 installDir=${2}
 
 scriptFileFullPath=`readlink -f ${0}`
@@ -29,23 +29,19 @@ fi
 
 startDate=$(date)
 
-#export CFLAGS="$CFLAGS -I${repositoryRoot}/include"
-#export CPPFLAGS="$CPPFLAGS -I${repositoryRoot}/include"
-
 ${scriptDirectory}/unix_prepare_repo_once.sh
 
-gccDir=${repositoryRoot}/.extras/gcc
+glibcDir=${repositoryRoot}/.extras/glibc
 
-cd ${gccDir}
+cd ${glibcDir}
 git checkout .
 git checkout ${gccBranchName}
 git clean -xfd
 git submodule sync --recursive
 git submodule update --init --recursive
-./contrib/download_prerequisites
 
 # build dir
-buildDir=${repositoryRoot}/build/${lsbCode}/gcc/${gccBranchName}
+buildDir=${repositoryRoot}/build/${lsbCode}/glibc/${gccBranchName}
 mkdir -p ${buildDir}
 
 # install dir
@@ -53,9 +49,8 @@ rm -fr ${installDir}
 
 # cd to build dir
 cd ${buildDir}
-${gccDir}/configure --prefix=${installDir} --disable-multilib --disable-libsanitizer --disable-libjava
-#${gccDir}/configure --prefix=${installDir} --disable-multilib --disable-libsanitizer --enable-languages=c,c++
-make -j$(nproc)
+${glibcDir}/configure --prefix=${installDir}
+make
 mkdir -p ${installDir}
 make install
 
